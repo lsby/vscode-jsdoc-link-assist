@@ -1,7 +1,7 @@
 {
   "name": "lsby-vscode-jsdoc-link-assist",
   "displayName": "jsdoc link 助手",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "对jsdoc的link部分进行快速修复和自动完成",
   "categories": [
     "Other"
