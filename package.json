@@ -1,0 +1,68 @@
+{
+  "name": "lsby-vscode-jsdoc-link-assist",
+  "displayName": "jsdoc link 助手",
+  "version": "0.0.0",
+  "description": "对jsdoc的link部分进行快速修复和自动完成",
+  "categories": [
+    "Other"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lsby/vscode-jsdoc-link-assist"
+  },
+  "publisher": "hbybyyang",
+  "main": "./dist/extension.js",
+  "scripts": {
+    "check:all": "npm run check:format && npm run check:lint && npm run check:type",
+    "check:format": "prettier --write .",
+    "check:lint": "eslint . --fix",
+    "check:type": "tsc --noEmit",
+    "check:type:watch": "tsc --noEmit -w",
+    "vscode:prepublish": "npm run package",
+    "vscode:package": "npm run check:all && npm run package && bumpp && vsce package",
+    "vscode:publish": "vsce publish",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "test": "vscode-test",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src --ext ts"
+  },
+  "activationEvents": [
+    "onLanguage:typescript",
+    "onLanguage:typescriptreact"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
+    "@lsby/eslint-config": "^0.1.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.92.0",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.11.0",
+    "@vitest/coverage-v8": "^2.0.2",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0",
+    "bumpp": "^9.4.1",
+    "esbuild": "^0.21.5",
+    "eslint": "^8.57.0",
+    "husky": "^9.1.4",
+    "npm-run-all": "^4.1.5",
+    "open-cli": "^8.0.0",
+    "prettier": "3.2.5",
+    "prettier-plugin-packagejson": "^2.5.0",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5",
+    "vitest": "^2.0.2"
+  },
+  "packageManager": "npm@10.8.2",
+  "engines": {
+    "vscode": "^1.92.0"
+  }
+}
